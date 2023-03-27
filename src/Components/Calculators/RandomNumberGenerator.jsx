@@ -14,7 +14,7 @@ export default function LowerToUpper() {
   const [random, setRandom] = useState('');
 
   function randInt(min, max) {
-    return Math.floor(Math.random() * (Number(max) - Number(min))) + Number(min);
+    return Math.floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min);
   }
 
   function handleClick() {
