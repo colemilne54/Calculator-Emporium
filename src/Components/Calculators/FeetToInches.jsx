@@ -9,20 +9,18 @@ import {
   Box,
 } from '@mui/material';
 
-export default function BMI() {
-  const [weight, setWeight] = useState('');
-  const [height, setHeight] = useState('');
+export default function FeetToInches() {
+  const [feet, setFeet] = useState('');
+  const [inches, setInches] = useState('');
 
-  function calculateBMI() {
-    console.log(weight);
-    console.log(height);
-    return ((703 * weight) / (height ** 2)).toFixed(2);
+  function calculateInches() {
+    return Number(feet)*12+Number(inches);
   }
 
   return (
     <>
       <Typography variant="h4" component="h2">
-        BMI
+        Feet to Inches
       </Typography>
       <Box
         component="form"
@@ -34,50 +32,51 @@ export default function BMI() {
       >
         <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-weight"
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
-            aria-describedby="outlined-weight-helper-text"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            // https://stackoverflow.com/questions/43687964/only-numbers-input-number-in-react
+            id="outlined-adornment-feet"
+            endAdornment={<InputAdornment position="end">ft</InputAdornment>}
+            aria-describedby="outlined-feet-helper-text"
+            value={feet}
+            onChange={(e) => setFeet(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
             inputProps={{
-              'aria-label': 'weight',
+              'aria-label': 'feet',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text">
-            Weight
+          <FormHelperText id="outlined-feet-helper-text">
+            Feet
           </FormHelperText>
         </FormGroup>
         <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-height"
+            id="outlined-adornment-inches"
             endAdornment={<InputAdornment position="end">in</InputAdornment>}
-            aria-describedby="outlined-height-helper-text"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            aria-describedby="outlined-inches-helper-text"
+            value={inches}
+            onChange={(e) => setInches(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
             inputProps={{
-              'aria-label': 'height',
+              'aria-label': 'inches',
             }}
           />
-          <FormHelperText id="outlined-height-helper-text">
-            Height
+          <FormHelperText id="outlined-inches-helper-text">
+            Inches
           </FormHelperText>
         </FormGroup>
         <Button variant="contained">Submit</Button>
-        <Button onClick={() => {setWeight(''); setHeight('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
+        <Button onClick={() => {setFeet(''); setInches('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
       </Box>
       <Typography variant="p" component="p">
-        {weight != '' && height != '' && `BMI:  ${calculateBMI()}`}
+        {feet != ''  && `${feet}'`}
+        {inches != ''  && `${inches}" `}
+        {(feet != '' || inches != '') && `= ${calculateInches()} inches`}
       </Typography>
     </>
   );

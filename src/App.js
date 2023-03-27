@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.css';
-import BMI from './Components/Calculators/BMI';
+import FeetToInches from './Components/Calculators/FeetToInches';
 
 export default function App() {
   return (
     <div>
-      <BMI />
+      <FeetToInches />
     </div>
   );
 }
