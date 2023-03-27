@@ -14,8 +14,6 @@ export default function BMI() {
   const [height, setHeight] = useState('');
 
   function calculateBMI() {
-    console.log(weight);
-    console.log(height);
     return ((703 * weight) / (height ** 2)).toFixed(2);
   }
 
