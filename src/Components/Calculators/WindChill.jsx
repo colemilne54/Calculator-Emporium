@@ -16,9 +16,12 @@ import {
   Paper
 } from '@mui/material';
 
+function calcWindChill(temp, wind) {
+  return (35.74 + 0.6215*temp - 35.75*wind**.16 + 0.4275*temp*wind**.16).toFixed(0);
+}
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(wind, feels) {
+  return { wind, feels };
 }
 
 var tempArr = [];
@@ -28,18 +31,26 @@ for(var i=40; i>=-45; i-=5) {
 }
 
 var windArr = [];
+var rows = [];
 
 for(var i=5; i<=60; i+=5) {
   windArr.push(i);
+  var frost = [];
+  for (var temp in tempArr) {
+    frost.push(calcWindChill(tempArr[temp], i));
+  }
+  rows.push(createData(i, frost));
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
+
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
 
 
 
@@ -49,9 +60,9 @@ function FrostBiteChart() {
       <Table sx={{ minWidth: 650 }} aria-label="frostbite table">
         <TableHead>
           <TableRow>
-            <TableCell>Calm</TableCell>
+            <TableCell sx = {{backgroundColor: 'black', color: 'white'}}>Calm</TableCell>
             {tempArr.map((temp) => (
-              <TableCell>
+              <TableCell sx={{border: 1, borderColor: 'grey.300', backgroundColor: 'black', color: 'white'}}>
                 {temp}
               </TableCell>
           ))}
@@ -60,16 +71,15 @@ function FrostBiteChart() {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              key={row.wind}
+              // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.name}
+              <TableCell component="th" scope="row" sx={{borderRight: 1, borderColor: 'grey.300', backgroundColor: 'black', color: 'white'}}>
+                {row.wind}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              {row.feels.map((feel) => (
+                <TableCell align="right" sx={{border: 1, borderColor: 'grey.300', backgroundColor: 'primary.light'}}>{feel}</TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
