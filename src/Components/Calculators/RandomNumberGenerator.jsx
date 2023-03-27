@@ -8,12 +8,16 @@ import {
   Box,
 } from '@mui/material';
 
-export default function FeetToInches() {
-  const [feet, setFeet] = useState('');
-  const [inches, setInches] = useState('');
+export default function LowerToUpper() {
+  const [lower, setLower] = useState('');
+  const [upper, setUpper] = useState('');
 
-  function calculateInches() {
-    return Number(feet)*12+Number(inches);
+  function calculateUpper() {
+    return Number(lower)*12+Number(upper);
+  }
+
+  function handleClick() {
+
   }
 
   return (
@@ -31,45 +35,45 @@ export default function FeetToInches() {
       >
         <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-feet"
+            id="outlined-adornment-lower"
             endAdornment={<InputAdornment position="end">Lower Limit</InputAdornment>}
-            aria-describedby="outlined-feet-helper-text"
-            value={feet}
-            onChange={(e) => setFeet(e.target.value)}
+            aria-describedby="outlined-lower-helper-text"
+            value={lower}
+            onChange={(e) => setLower(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
             inputProps={{
-              'aria-label': 'feet',
+              'aria-label': 'lower',
             }}
           />
         </FormGroup>
         <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-inches"
+            id="outlined-adornment-upper"
             endAdornment={<InputAdornment position="end">Upper Limit</InputAdornment>}
-            aria-describedby="outlined-inches-helper-text"
-            value={inches}
-            onChange={(e) => setInches(e.target.value)}
+            aria-describedby="outlined-upper-helper-text"
+            value={upper}
+            onChange={(e) => setUpper(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
             inputProps={{
-              'aria-label': 'inches',
+              'aria-label': 'upper',
             }}
           />
         </FormGroup>
-        <Button variant="contained">Submit</Button>
-        <Button onClick={() => {setFeet(''); setInches('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
+        <Button variant="contained" onClick={handleClick}>Submit</Button>
+        <Button onClick={() => {setLower(''); setUpper('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
       </Box>
       <Typography variant="p" component="p">
-        {feet != ''  && `${feet}'`}
-        {inches != ''  && `${inches}" `}
-        {(feet != '' || inches != '') && `= ${calculateInches()} inches`}
+        {lower != ''  && `${lower}'`}
+        {upper != ''  && `${upper}" `}
+        {(lower != '' || upper != '') && `= ${calculateUpper()} upper`}
       </Typography>
     </>
   );
