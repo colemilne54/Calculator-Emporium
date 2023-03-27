@@ -39,7 +39,6 @@ export default function LowerToUpper() {
             endAdornment={<InputAdornment position="end">Lower Limit</InputAdornment>}
             aria-describedby="outlined-lower-helper-text"
             value={lower}
-            onChange={(e) => setLower(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
@@ -56,7 +55,6 @@ export default function LowerToUpper() {
             endAdornment={<InputAdornment position="end">Upper Limit</InputAdornment>}
             aria-describedby="outlined-upper-helper-text"
             value={upper}
-            onChange={(e) => setUpper(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
