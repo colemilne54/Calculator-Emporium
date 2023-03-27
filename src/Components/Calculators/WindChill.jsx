@@ -27,6 +27,12 @@ for(var i=40; i>=-45; i-=5) {
   tempArr.push(i);
 }
 
+var windArr = [];
+
+for(var i=5; i<=60; i+=5) {
+  windArr.push(i);
+}
+
 const rows = [
   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
@@ -44,10 +50,11 @@ function FrostBiteChart() {
         <TableHead>
           <TableRow>
             <TableCell>Calm</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            {tempArr.map((temp) => (
+              <TableCell>
+                {temp}
+              </TableCell>
+          ))}
           </TableRow>
         </TableHead>
         <TableBody>
