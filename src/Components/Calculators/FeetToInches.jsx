@@ -38,7 +38,7 @@ export default function FeetToInches() {
             value={feet}
             onChange={(e) => setFeet(e.target.value)}
             onKeyPress={(event) => {
-              if (!/[0-9]/.test(event.key)) {
+              if (!/[1-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
