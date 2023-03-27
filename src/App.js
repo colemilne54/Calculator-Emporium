@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.css';
-import DogYears from './Components/Calculators/DogYears';
+import WindChill from './Components/Calculators/WindChill';
 
 export default function App() {
   return (
     <div>
-      <DogYears />
+      <WindChill />
     </div>
   );
 }
