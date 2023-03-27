@@ -7,6 +7,7 @@ import {
   InputAdornment,
   Typography,
   FormGroup,
+  Box,
 } from '@mui/material';
 // 703 * weight / height^2
 
@@ -22,7 +23,7 @@ export default function BMI() {
   function calculateBMI() {
     console.log(weight);
     console.log(height);
-    return (703 * weight) / (height ^ 2);
+    return ((703 * weight) / (height ** 2)).toFixed(2);
   }
 
   return (
@@ -31,14 +32,13 @@ export default function BMI() {
         BMI
       </Typography>
       <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
         <FormGroup>
           <OutlinedInput
             id="outlined-adornment-weight"
@@ -69,11 +69,11 @@ export default function BMI() {
             Height
           </FormHelperText>
         </FormGroup>
-        <Button variant="contained">Contained</Button>
-      </FormControl>
+        <Button variant="contained">Submit</Button>
+        <Button onClick={() => {setWeight(''); setHeight('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
       </Box>
       <Typography variant="p" component="p">
-        {weight != '' && height != '' && calculateBMI()}
+        {weight != '' && height != '' && `BMI:  ${calculateBMI()}`}
       </Typography>
       {/* <input
         value={weight}
