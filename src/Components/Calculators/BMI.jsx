@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   OutlinedInput,
-  FormControl,
   Button,
   FormHelperText,
   InputAdornment,
@@ -9,16 +8,10 @@ import {
   FormGroup,
   Box,
 } from '@mui/material';
-// 703 * weight / height^2
 
 export default function BMI() {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-
-  function handleChange(e) {
-    setWeight(e.target.value);
-    setHeight(e.target.value);
-  }
 
   function calculateBMI() {
     console.log(weight);
@@ -75,13 +68,6 @@ export default function BMI() {
       <Typography variant="p" component="p">
         {weight != '' && height != '' && `BMI:  ${calculateBMI()}`}
       </Typography>
-      {/* <input
-        value={weight}
-        onChange={handleChange}
-        placeholder="Weight (in lbs)"
-      />
-      <p>You typed: {weight}</p>
-      <button onClick={() => setWeight('')}>Reset</button> */}
     </>
   );
 }
