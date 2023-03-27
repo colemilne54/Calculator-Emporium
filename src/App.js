@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.css';
-import FeetToInches from './Components/Calculators/FeetToInches';
+import DogYears from './Components/Calculators/DogYears';
 
 export default function App() {
   return (
     <div>
-      <FeetToInches />
+      <DogYears />
     </div>
   );
 }
