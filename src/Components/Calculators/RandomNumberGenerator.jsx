@@ -9,15 +9,17 @@ import {
 } from '@mui/material';
 
 export default function LowerToUpper() {
-  const [lower, setLower] = useState('');
-  const [upper, setUpper] = useState('');
+  const [lower, setLower] = useState('1');
+  const [upper, setUpper] = useState('100');
+  const [random, setRandom] = useState('');
 
-  function calculateUpper() {
-    return Number(lower)*12+Number(upper);
+  function randInt(min, max) {
+    console.log(Math.floor(Math.random() * (max - min) ) + min)
+    return Math.floor(Math.random() * (max - min) ) + min;
   }
 
   function handleClick() {
-
+    return randInt(lower, upper);
   }
 
   return (
@@ -65,13 +67,11 @@ export default function LowerToUpper() {
             }}
           />
         </FormGroup>
-        <Button variant="contained" onClick={handleClick}>Submit</Button>
-        <Button onClick={() => {setLower(''); setUpper('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
+        <Button variant="contained" onClick={handleClick}>Generate</Button>
+        <Button onClick={() => {setLower(''); setUpper('')}} variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
       </Box>
       <Typography variant="p" component="p">
-        {lower != ''  && `${lower}'`}
-        {upper != ''  && `${upper}" `}
-        {(lower != '' || upper != '') && `= ${calculateUpper()} upper`}
+        {(lower != '' && upper != '') && `${random}`}
       </Typography>
     </>
   );
