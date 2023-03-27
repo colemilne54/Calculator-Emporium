@@ -9,8 +9,6 @@ import {
   Box,
 } from '@mui/material';
 
-// 
-
 export default function WindChill() {
   const [temp, setTemp] = useState('');
   const [wind, setWind] = useState('');
