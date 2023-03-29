@@ -68,6 +68,10 @@ export default function BarbellTotal() {
             Bar Weight
           </FormHelperText>
         </FormGroup>
+        <br />
+        <Typography variant="h5" component="h3">
+        Add Weight
+      </Typography>
         <Button
           onClick={() => {
             setTotal((total) => Number(total) + Number(50));
@@ -96,6 +100,7 @@ export default function BarbellTotal() {
           45 lbs.
         </Button>
         <br />
+        <br />
         <Button variant="contained">Submit</Button>
         <Button
           onClick={() => {
@@ -107,8 +112,9 @@ export default function BarbellTotal() {
           Reset
         </Button>
       </Box>
+      <br />
       <Typography variant="p" component="p">
-        {total}
+        {`Total Weight: ${total}`}
       </Typography>
     </>
   );
