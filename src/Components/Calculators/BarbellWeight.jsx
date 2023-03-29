@@ -17,7 +17,7 @@ export default function BarbellTotal() {
   return (
     <>
       <Typography variant="h4" component="h2">
-        BMI
+        Barbell Weight Calclator
       </Typography>
       <Box
         component="form"
@@ -83,7 +83,7 @@ export default function BarbellTotal() {
         </Button>
         <Button
           onClick={() => {
-            setTotal((total) => Number(total) + Number(90));
+            setTotal((total) => Number(total) + Number(70));
           }}
           id="donut-35"
           sx={{ mb: 2, mr: 2}}
@@ -92,7 +92,7 @@ export default function BarbellTotal() {
         </Button>
         <Button
           onClick={() => {
-            setTotal((total) => Number(total) + Number(70));
+            setTotal((total) => Number(total) + Number(90));
           }}
           id="donut-45"
           sx={{ mb: 2,}}

@@ -18,7 +18,8 @@ p {
   border-radius: 85px;
   height:85px;
   width:85px;
-  color: black;
+  color: white;
+  line-height: 3.5;
 }
 
 #donut-25 {
@@ -26,7 +27,8 @@ p {
   border-radius:65px;
   height:65px;
   width:65px;
-  color: black;
+  color: white;
+  line-height: 2.6;
 }
 
 #donut-10 {
