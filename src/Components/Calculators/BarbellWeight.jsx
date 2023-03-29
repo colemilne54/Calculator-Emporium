@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactCurvedText from 'react-curved-text';
 import {
   OutlinedInput,
   Button,
@@ -10,11 +11,11 @@ import {
 } from '@mui/material';
 
 export default function BarbellTotal() {
-  const [total, setTotal] = useState('');
-  const [bar, setBar] = useState('45');
+  var [bar, setBar] = useState('45');
+  var [total, setTotal] = useState(bar);
 
   function calculateBMI() {
-    return ((703 * total) / (bar ** 2)).toFixed(2);
+    return ((703 * total) / bar ** 2).toFixed(2);
   }
 
   return (
@@ -71,11 +72,44 @@ export default function BarbellTotal() {
             Bar Weight
           </FormHelperText>
         </FormGroup>
+        <Button
+          onClick={() => {
+            setTotal((total) => Number(total) + Number(90));
+          }}
+          className="donut"
+          sx={{ mb: 2 }}
+        >
+          
+
+        </Button>
+        <ReactCurvedText width='100'
+  height='100'
+  cx='57'
+  cy='-32'
+  rx='100'
+  ry='100'
+  startOffset='127'
+  reversed={false}
+  text='45 lbs.'
+  textProps={{"style": {"fontSize": 24}}}
+  textPathProps={null}
+  tspanProps={null}
+  ellipseProps={null}
+  svgProps={null} />
+        <br />
         <Button variant="contained">Submit</Button>
-        <Button onClick={() => {setTotal(''); setBar('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
+        <Button
+          onClick={() => {
+            setTotal('');
+          }}
+          variant="contained"
+          sx={{ ml: 2, bgcolor: 'text.secondary' }}
+        >
+          Reset
+        </Button>
       </Box>
       <Typography variant="p" component="p">
-        {total != '' && bar != '' && `BMI:  ${total}`}
+        {`${total}`}
       </Typography>
     </>
   );
