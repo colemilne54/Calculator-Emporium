@@ -9,12 +9,12 @@ import {
   Box,
 } from '@mui/material';
 
-export default function BarbellWeight() {
-  const [weight, setWeight] = useState('');
-  const [height, setHeight] = useState('');
+export default function BarbellTotal() {
+  const [total, setTotal] = useState('');
+  const [bar, setBar] = useState('45');
 
   function calculateBMI() {
-    return ((703 * weight) / (height ** 2)).toFixed(2);
+    return ((703 * total) / (bar ** 2)).toFixed(2);
   }
 
   return (
@@ -30,13 +30,13 @@ export default function BarbellWeight() {
         noValidate
         autoComplete="off"
       >
-        <FormGroup>
+        {/* <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-weight"
+            id="outlined-adornment-total"
             endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
-            aria-describedby="outlined-weight-helper-text"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            aria-describedby="outlined-total-helper-text"
+            value={total}
+            onChange={(e) => setTotal(e.target.value)}
             // https://stackoverflow.com/questions/43687964/only-numbers-input-number-in-react
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
@@ -44,38 +44,38 @@ export default function BarbellWeight() {
               }
             }}
             inputProps={{
-              'aria-label': 'weight',
+              'aria-label': 'total',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text">
-            Weight
+          <FormHelperText id="outlined-total-helper-text">
+            Total
           </FormHelperText>
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <OutlinedInput
-            id="outlined-adornment-height"
-            endAdornment={<InputAdornment position="end">in</InputAdornment>}
-            aria-describedby="outlined-height-helper-text"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            id="outlined-adornment-bar"
+            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
+            aria-describedby="outlined-bar-helper-text"
+            value={bar}
+            onChange={(e) => setBar(e.target.value)}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
             }}
             inputProps={{
-              'aria-label': 'height',
+              'aria-label': 'bar',
             }}
           />
-          <FormHelperText id="outlined-height-helper-text">
-            Height
+          <FormHelperText id="outlined-bar-helper-text">
+            Bar Weight
           </FormHelperText>
         </FormGroup>
         <Button variant="contained">Submit</Button>
-        <Button onClick={() => {setWeight(''); setHeight('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
+        <Button onClick={() => {setTotal(''); setBar('')}}variant="contained" sx={{ml: 2, bgcolor: 'text.secondary'}}>Reset</Button>
       </Box>
       <Typography variant="p" component="p">
-        {weight != '' && height != '' && `BMI:  ${calculateBMI()}`}
+        {total != '' && bar != '' && `BMI:  ${total}`}
       </Typography>
     </>
   );
