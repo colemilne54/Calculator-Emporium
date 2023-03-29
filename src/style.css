@@ -9,20 +9,24 @@ p {
   border-radius: 100px;
   height:100px;
   width:100px;
+  color: white;
+  line-height: 4.25;
 }
 
 #donut-35 {
-  border: 35px solid rgb(95, 95, 95);
-  border-radius: 100px;
-  height:100px;
-  width:100px;
+  border: 30px solid rgb(95, 95, 95);
+  border-radius: 85px;
+  height:85px;
+  width:85px;
+  color: black;
 }
 
 #donut-25 {
-  border: 35px solid rgb(95, 95, 95);
-  border-radius: 100px;
-  height:100px;
-  width:100px;
+  border: 25px solid rgb(95, 95, 95);
+  border-radius:65px;
+  height:65px;
+  width:65px;
+  color: black;
 }
 
 #donut-10 {
@@ -30,6 +34,7 @@ p {
   border-radius: 100px;
   height:100px;
   width:100px;
+  color: black;
 }
 
 #donut-5 {
@@ -37,4 +42,5 @@ p {
   border-radius: 100px;
   height:100px;
   width:100px;
+  color: black;
 }

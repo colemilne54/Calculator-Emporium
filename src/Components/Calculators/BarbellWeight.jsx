@@ -14,10 +14,6 @@ export default function BarbellTotal() {
   var [bar, setBar] = useState('45');
   var [total, setTotal] = useState(bar);
 
-  function calculateBMI() {
-    return ((703 * total) / bar ** 2).toFixed(2);
-  }
-
   return (
     <>
       <Typography variant="h4" component="h2">
@@ -58,7 +54,7 @@ export default function BarbellTotal() {
             endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
             aria-describedby="outlined-bar-helper-text"
             value={bar}
-            onChange={(e) => setBar(e.target.value)}
+            onChange={(e) => {setBar(e.target.value); setTotal(e.target.value);}}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
@@ -74,33 +70,36 @@ export default function BarbellTotal() {
         </FormGroup>
         <Button
           onClick={() => {
+            setTotal((total) => Number(total) + Number(50));
+          }}
+          id="donut-25"
+          sx={{ mb: 2, mr: 2}}
+        >
+          25 lbs.
+        </Button>
+        <Button
+          onClick={() => {
             setTotal((total) => Number(total) + Number(90));
           }}
-          className="donut"
-          sx={{ mb: 2 }}
+          id="donut-35"
+          sx={{ mb: 2, mr: 2}}
         >
-          
-
+          35 lbs.
         </Button>
-        <ReactCurvedText width='100'
-  height='100'
-  cx='57'
-  cy='-32'
-  rx='100'
-  ry='100'
-  startOffset='127'
-  reversed={false}
-  text='45 lbs.'
-  textProps={{"style": {"fontSize": 24}}}
-  textPathProps={null}
-  tspanProps={null}
-  ellipseProps={null}
-  svgProps={null} />
+        <Button
+          onClick={() => {
+            setTotal((total) => Number(total) + Number(70));
+          }}
+          id="donut-45"
+          sx={{ mb: 2,}}
+        >
+          45 lbs.
+        </Button>
         <br />
         <Button variant="contained">Submit</Button>
         <Button
           onClick={() => {
-            setTotal('');
+            setTotal(bar);
           }}
           variant="contained"
           sx={{ ml: 2, bgcolor: 'text.secondary' }}
@@ -109,7 +108,7 @@ export default function BarbellTotal() {
         </Button>
       </Box>
       <Typography variant="p" component="p">
-        {`${total}`}
+        {total}
       </Typography>
     </>
   );
