@@ -15,11 +15,18 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 export default function DaysUntil() {
   const [date, setDate] = useState(dayjs(new Date()));
-  const [height, setHeight] = useState('');
-
-  function calculateBMI() {
-    return ((703 * weight) / height ** 2).toFixed(2);
+  
+  function dateDifference() {
+    const today = dayjs(new Date());
+    console.log(today.diff(date, 'd'));
+    return today.diff(date, 'd');
   }
+
+  const handleChange = (event) => {
+    // 👇 Get input value from "event"
+    setDate(event.target.value);
+    dateDifference();
+  };
 
   return (
     <>
@@ -37,44 +44,15 @@ export default function DaysUntil() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker 
             label="Countdown Date"
-            value={date}
-            onChange={(date) => setDate(date)}
+            // value={date}
+            onChange={handleChange}
           />
         </LocalizationProvider>
-        <FormGroup>
-          <OutlinedInput
-            id="outlined-adornment-height"
-            endAdornment={<InputAdornment position="end">in</InputAdornment>}
-            aria-describedby="outlined-height-helper-text"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            onKeyPress={(event) => {
-              if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-              }
-            }}
-            inputProps={{
-              'aria-label': 'height',
-            }}
-          />
-          <FormHelperText id="outlined-height-helper-text">
-            Height
-          </FormHelperText>
-        </FormGroup>
+        <br />
         <Button variant="contained">Submit</Button>
-        <Button
-          onClick={() => {
-            setWeight('');
-            setHeight('');
-          }}
-          variant="contained"
-          sx={{ ml: 2, bgcolor: 'text.secondary' }}
-        >
-          Reset
-        </Button>
       </Box>
       <Typography variant="p" component="p">
-        {weight != '' && height != '' && `BMI:  ${calculateBMI()}`}
+        {dateDifference}
       </Typography>
     </>
   );
