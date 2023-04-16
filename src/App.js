@@ -10,12 +10,9 @@ import DaysUntil from './Components/Calculators/DaysUntil';
 export default function App() {
   return (
     <>
-      <AppAppBar />
-      {/* <RandomNumberGenerator /> */}
-      {/* <DogYears /> */}
-      {/* <AppFooter /> */}
-      {/* <BarbellWeight /> */}
-      <DaysUntil />
+      <div className="flex">
+        <DaysUntil />
+      </div>
     </>
   );
 }
