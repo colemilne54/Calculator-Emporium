@@ -12,15 +12,15 @@ const rightLink = {
 
 function AppAppBar() {
   return (
-    <div>
-      <AppBar position="fixed">
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Box sx={{ flex: 1 }} />
+    <div id="header-div" className="bg-blue-500">
+      <AppBar position="fixed" className="bg-blue-500">
+        <Toolbar className="bg-blue-500" sx={{ justifyContent: 'space-between' }}>
+          <Box sx={{ flex: 1 }} className="bg-blue-500"/>
           <Link
             variant="h6"
             underline="none"
             color="inherit"
-            href="/premium-themes/onepirate/"
+            href="/"
             sx={{ fontSize: 24 }}
           >
             {'Calculator Emporium'}
@@ -30,7 +30,7 @@ function AppAppBar() {
               color="inherit"
               variant="h6"
               underline="none"
-              href="/premium-themes/onepirate/sign-in/"
+              href="/"
               sx={rightLink}
             >
               {/* {'Sign In'} */}
@@ -38,7 +38,7 @@ function AppAppBar() {
             <Link
               variant="h6"
               underline="none"
-              href="/premium-themes/onepirate/sign-up/"
+              href="/"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
               {/* {'Sign Up'} */}

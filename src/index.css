@@ -27,6 +27,10 @@ p {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+#header-div {
+  z-index: -1;
+}
+
 #donut-45 {
   border: 35px solid rgb(95, 95, 95);
   border-radius: 100px;
