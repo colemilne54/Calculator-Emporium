@@ -23,7 +23,7 @@ export default function App() {
       <div className="flex">
         <AppAppBar />
         <SideBar />
-        <div className="flex">
+        <div className="flex mx-auto mt-20 flex-col">
           <Routes>
             <Route path="/"/>
             <Route path="/dog-years" element={<DogYears />} />
