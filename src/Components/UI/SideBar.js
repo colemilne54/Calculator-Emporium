@@ -1,7 +1,9 @@
 import { FaDog, FaRuler, FaRandom } from 'react-icons/fa';
 import { GiWeightLiftingUp, GiWeightScale } from 'react-icons/gi'
 import { RiWindyFill } from "react-icons/ri";
+import { LuBinary } from "react-icons/lu";
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 
 const SideBar = () => {
@@ -35,7 +37,7 @@ const SideBar = () => {
         </Link>
 
         <Link to="/decimal-to-binary">
-            <SideBarIcon icon={<FaRandom size="28" />} text="Random Number Generator" />
+            <SideBarIcon icon={<LuBinary size="28" />} text="Decimal To Binary" />
         </Link>
    
         </div>

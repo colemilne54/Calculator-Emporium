@@ -14,7 +14,6 @@ import WindChill from './Components/Calculators/WindChill'
 import RandomNumberGenerator from './Components/Calculators/RandomNumberGenerator';
 import DecimalToBinary from './Components/Calculators/DecimalToBinary';
 
-
 import { Route, Routes } from "react-router-dom"
 
 
