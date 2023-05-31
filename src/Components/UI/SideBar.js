@@ -33,6 +33,10 @@ const SideBar = () => {
         <Link to="/random-number">
             <SideBarIcon icon={<FaRandom size="28" />} text="Random Number Generator" />
         </Link>
+
+        <Link to="/decimal-to-binary">
+            <SideBarIcon icon={<FaRandom size="28" />} text="Random Number Generator" />
+        </Link>
    
         </div>
     );

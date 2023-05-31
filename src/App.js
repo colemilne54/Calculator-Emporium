@@ -12,6 +12,7 @@ import BMI from './Components/Calculators/BMI';
 import WindChill from './Components/Calculators/WindChill'
 // import DaysUntil from './Components/Calculators/DaysUntil';
 import RandomNumberGenerator from './Components/Calculators/RandomNumberGenerator';
+import DecimalToBinary from './Components/Calculators/DecimalToBinary';
 
 
 import { Route, Routes } from "react-router-dom"
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/bmi" element={<BMI />} />
             <Route path="/windchill" element={<WindChill />} />
             <Route path="/random-number" element={<RandomNumberGenerator />} />
+            <Route path="/decimal-to-binary" element={<DecimalToBinary />} />
           </Routes>
         </div>
       </div>
