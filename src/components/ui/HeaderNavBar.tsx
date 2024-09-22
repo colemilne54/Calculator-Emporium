@@ -13,7 +13,7 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import { JSX, SVGProps } from "react";
 import { FaCalculator } from "react-icons/fa6";
-import {FaDog} from "react-icons/fa";
+import {FaDog, FaRandom} from "react-icons/fa";
 
 export default function HeaderNavBar() {
    return (
@@ -34,8 +34,8 @@ export default function HeaderNavBar() {
                   <Link href="/dog-years" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
                      Dog Years <FaDog />
                   </Link>
-                  <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
-                     About
+                  <Link href="/random-number-generator" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+                     Random Number Generator
                   </Link>
                   <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
                      Services
@@ -59,11 +59,11 @@ export default function HeaderNavBar() {
                Dog Years <FaDog className="ml-1 h-5 w-5" />
             </Link>
             <Link
-               href="#"
+               href="/random-number-generator"
                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
                prefetch={false}
             >
-               About
+               Random Number Generator <FaRandom className="ml-1 h-5 w-5" />
             </Link>
             <Link
                href="#"
