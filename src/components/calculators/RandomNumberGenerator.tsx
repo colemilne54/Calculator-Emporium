@@ -7,11 +7,11 @@ import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 
 export default function RandomNumberGenerator() {
-   const [lower, setLower] = useState('1');
-   const [upper, setUpper] = useState('100');
-   const [random, setRandom] = useState('');
+   const [lower, setLower] = useState<number>(1);
+   const [upper, setUpper] = useState<number>(100);
+   const [random, setRandom] = useState<number | null>(null);
 
-   function randInt(min, max) {
+   function randInt(min: number, max: number): number {
       return Math.floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min);
    }
 
@@ -32,7 +32,7 @@ export default function RandomNumberGenerator() {
                      id="lower"
                      type="number"
                      value={lower}
-                     onChange={(e) => setLower(e.target.value)}
+                     onChange={(e) => setLower(Number(e.target.value))}
                      placeholder="Enter lower limit"
                   />
                </div>
@@ -42,20 +42,20 @@ export default function RandomNumberGenerator() {
                      id="upper"
                      type="number"
                      value={upper}
-                     onChange={(e) => setUpper(e.target.value)}
+                     onChange={(e) => setUpper(Number(e.target.value))}
                      placeholder="Enter upper limit"
                   />
                </div>
             </form>
          </CardContent>
          <CardFooter className="flex justify-between">
-            <Button onClick={() => {setLower('1'); setUpper('100')}} variant="outline">Reset</Button>
+            <Button onClick={() => {setLower(0); setUpper(100); setRandom(null)}} variant="outline">Reset</Button>
             <Button onClick={handleClick}>Generate</Button>
          </CardFooter>
-         {(lower !== '' && upper !== '') && (
+         {(upper >= lower && random !== null) && (
             <CardContent>
                <p className="text-center font-semibold">
-                  Random Number: {random}
+                  Random Number: {random && (random)}
                </p>
             </CardContent>
          )}
