@@ -1,121 +1,54 @@
-import React, { useState } from 'react';
-import ReactCurvedText from 'react-curved-text';
-import {
-  OutlinedInput,
-  Button,
-  FormHelperText,
-  InputAdornment,
-  Typography,
-  FormGroup,
-  Box,
-} from '@mui/material';
+import { useState } from 'react';
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 
 export default function BarbellTotal() {
-  var [bar, setBar] = useState('45');
-  var [total, setTotal] = useState(bar);
+   const [bar, setBar] = useState<number>(45);
+   const [total, setTotal] = useState<number>(bar);
 
-  return (
-    <>
-      <Typography variant="h4" component="h2">
-        Barbell Weight Calclator
-      </Typography>
-      <Box
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        {/* <FormGroup>
-          <OutlinedInput
-            id="outlined-adornment-total"
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
-            aria-describedby="outlined-total-helper-text"
-            value={total}
-            onChange={(e) => setTotal(e.target.value)}
-            // https://stackoverflow.com/questions/43687964/only-numbers-input-number-in-react
-            onKeyPress={(event) => {
-              if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-              }
-            }}
-            inputProps={{
-              'aria-label': 'total',
-            }}
-          />
-          <FormHelperText id="outlined-total-helper-text">
-            Total
-          </FormHelperText>
-        </FormGroup> */}
-        <FormGroup>
-          <OutlinedInput
-            id="outlined-adornment-bar"
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
-            aria-describedby="outlined-bar-helper-text"
-            value={bar}
-            onChange={(e) => {setBar(e.target.value); setTotal(e.target.value);}}
-            onKeyPress={(event) => {
-              if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-              }
-            }}
-            inputProps={{
-              'aria-label': 'bar',
-            }}
-          />
-          <FormHelperText id="outlined-bar-helper-text">
-            Bar Weight
-          </FormHelperText>
-        </FormGroup>
-        <br />
-        <Typography variant="h5" component="h3">
-        Add Weight
-      </Typography>
-        <Button
-          onClick={() => {
-            setTotal((total) => Number(total) + Number(50));
-          }}
-          id="donut-25"
-          sx={{ mb: 2, mr: 2}}
-        >
-          25 lbs.
-        </Button>
-        <Button
-          onClick={() => {
-            setTotal((total) => Number(total) + Number(70));
-          }}
-          id="donut-35"
-          sx={{ mb: 2, mr: 2}}
-        >
-          35 lbs.
-        </Button>
-        <Button
-          onClick={() => {
-            setTotal((total) => Number(total) + Number(90));
-          }}
-          id="donut-45"
-          sx={{ mb: 2,}}
-        >
-          45 lbs.
-        </Button>
-        <br />
-        <br />
-        <Button variant="contained">Submit</Button>
-        <Button
-          onClick={() => {
-            setTotal(bar);
-          }}
-          variant="contained"
-          sx={{ ml: 2, bgcolor: 'text.secondary' }}
-        >
-          Reset
-        </Button>
-      </Box>
-      <br />
-      <Typography variant="p" component="p">
-        {`Total Weight: ${total}`}
-      </Typography>
-    </>
-  );
+   const addWeight = (weight: number) => {
+      setTotal((prevTotal: number) => Number(prevTotal) + Number(weight));
+   };
+
+   return (
+      <Card className="w-full max-w-md mx-auto">
+         <CardHeader>
+            <CardTitle>Barbell Weight Calculator</CardTitle>
+         </CardHeader>
+         <CardContent className="space-y-4">
+            <div className="space-y-2">
+               <Label htmlFor="bar-weight">Bar Weight (lbs)</Label>
+               <Input
+                  id="bar-weight"
+                  type="number"
+                  value={bar}
+                  onChange={(e) => {
+                     setBar(Number(e.target.value));
+                     setTotal(Number(e.target.value));
+                  }}
+                  placeholder="Enter bar weight"
+               />
+            </div>
+
+            <div className="space-y-2">
+               <Label>Add Weight</Label>
+               <div className="flex flex-wrap gap-2">
+                  <Button onClick={() => addWeight(50)} variant="outline">25 lbs</Button>
+                  <Button onClick={() => addWeight(70)} variant="outline">35 lbs</Button>
+                  <Button onClick={() => addWeight(90)} variant="outline">45 lbs</Button>
+               </div>
+            </div>
+
+            <div className="pt-4">
+               <p className="text-lg font-semibold">Total Weight: {total} lbs</p>
+            </div>
+         </CardContent>
+         <CardFooter className="flex justify-between">
+            <Button onClick={() => setTotal(bar)} variant="outline">Reset</Button>
+            <Button>Submit</Button>
+         </CardFooter>
+      </Card>
+   );
 }
