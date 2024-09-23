@@ -1,7 +1,11 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Home() {
-  return (
-    <h1>home</h1>
-  );
+   return (
+      <div className="flex">
+         <p>
+            Choose on of the Calculators above to begin exploring the Emporium
+         </p>
+      </div>
+   );
 }
