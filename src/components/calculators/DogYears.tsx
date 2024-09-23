@@ -1,18 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import {
+   Card,
+   CardHeader,
+   CardTitle,
+   CardContent,
+   CardFooter,
+} from '@/components/ui/card';
 
 export default function DogYearsCalculator() {
-   const [years, setYears] = useState<number | null>(null);
-   const [months, setMonths] = useState<number | null>(null);
+   const [years, setYears] = useState<string>('');
+   const [months, setMonths] = useState<string>('');
 
    function calculateDogYears() {
-      const yrs = Number(years) + Number(months / 12);
-      return (Number(16) * Math.log(yrs) + Number(31)).toFixed(2);
+      const validYears = years !== '' ? Number(years) : 0;
+      const validMonths = months !== '' ? Number(months) : 0;
+
+      if (validMonths || validYears) {
+         const yrs = validYears + validMonths / 12;
+         return (16 * Math.log(yrs) + 31).toFixed(2);
+      }
+      return '0.00';
    }
 
    return (
@@ -28,7 +40,7 @@ export default function DogYearsCalculator() {
                      id="years"
                      type="number"
                      value={years}
-                     onChange={(e) => setYears(Number(e.target.value))}
+                     onChange={(e) => setYears(e.target.value)}
                      placeholder="Enter years"
                   />
                </div>
@@ -38,17 +50,25 @@ export default function DogYearsCalculator() {
                      id="months"
                      type="number"
                      value={months}
-                     onChange={(e) => setMonths(Number(e.target.value))}
+                     onChange={(e) => setMonths(e.target.value)}
                      placeholder="Enter months"
                   />
                </div>
             </form>
          </CardContent>
          <CardFooter className="flex justify-between">
-            <Button onClick={() => {setYears(null); setMonths(null);}} variant="outline">Reset</Button>
+            <Button
+               onClick={() => {
+                  setYears('');
+                  setMonths('');
+               }}
+               variant="outline"
+            >
+               Reset
+            </Button>
             <Button>Calculate</Button>
          </CardFooter>
-         {(years !== null || months !== null) && (
+         {(years !== '' || months !== '') && (
             <CardContent>
                <p className="text-center font-semibold">
                   Dog Years: {calculateDogYears()}
