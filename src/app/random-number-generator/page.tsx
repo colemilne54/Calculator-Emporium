@@ -1,7 +1,5 @@
-import RandomNumberGenerator from "@/components/calculators/RandomNumberGenerator";
+import RandomNumberGenerator from '@/components/calculators/RandomNumberGenerator';
 
 export default function RandomNumberGeneratorPage() {
-   return (
-      <RandomNumberGenerator />
-   )
+   return <RandomNumberGenerator />;
 }
