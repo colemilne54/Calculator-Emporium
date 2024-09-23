@@ -12,8 +12,8 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { JSX, ReactElement, SVGProps } from 'react';
-import { FaCalculator, FaWeightScale } from 'react-icons/fa6';
-import { FaDog, FaRandom, FaRuler, FaWind } from 'react-icons/fa';
+import { FaCalendarDay, FaDog, FaRuler, FaWind, FaCalculator, FaWeightScale } from 'react-icons/fa6';
+import { FaRandom } from 'react-icons/fa';
 
 type NavLink = {
    name: string;
@@ -26,6 +26,11 @@ const navLinks: NavLink[] = [
       name: 'Dog Years',
       href: '/dog-years',
       icon: <FaDog className="ml-1 h-5 w-5" />,
+   },
+   {
+      name: 'Days Until',
+      href: '/days-until',
+      icon: <FaCalendarDay className="ml-1 h-5 w-5" />,
    },
    {
       name: 'Random Number Generator',
